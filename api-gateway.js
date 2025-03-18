@@ -41,18 +41,18 @@ function authRole(...roles) {
 }
 
 app.use('/auth', (req, res) => {
-    proxy.web(req, res, { target: 'http://54.158.162.73:5002' });
+    proxy.web(req, res, { target: 'http://54.82.65.106:5002' });
 })
 
 app.use('/books/user', authToken, authRole("user", "admin"), (req, res) => {
     console.log("INSIDE API GATEWAY ORDER VIEW")
-    proxy.web(req, res, { target: 'http://18.204.197.163:5003/user' });
+    proxy.web(req, res, { target: 'http://3.88.173.51:5003/user' });
 })
 
 
 app.use('/books/admin', authToken, authRole("admin"), (req, res) => {
     console.log("INSIDE API GATEWAY ORDER VIEW")
-    proxy.web(req, res, { target: 'http://18.204.197.163:5003/admin' });
+    proxy.web(req, res, { target: 'http://3.88.173.51:5003/admin' });
 })
 
 app.listen(port, () => {
